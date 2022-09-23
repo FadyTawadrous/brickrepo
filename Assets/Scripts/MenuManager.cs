@@ -19,9 +19,6 @@ public class MenuManager : MonoBehaviour
     public string bestPlayer;
     public int bestScore;
 
-    public TextMeshProUGUI inputField;
-    public TextMeshProUGUI scoreText;
-
     private void Awake()
     {
         if (Instance != null)
@@ -36,24 +33,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-       LoadScore();
-        scoreText.text = "Best Score: " + MenuManager.Instance.bestPlayer + " : " + MenuManager.Instance.bestScore;
-    }
-
-    public void StartNew()
-    {
-        currentPlayer = inputField.text;
-        currentScore = 0;
-        SceneManager.LoadScene(1);
-    }
-
-    public void Exit()
-    {
-#if UNITY_EDITOR
-        EditorApplication.ExitPlaymode();
-#else
-        Application.Quit(); // original code to quit Unity player
-#endif
+        //ResetGame();
     }
 
     [System.Serializable]
@@ -85,5 +65,14 @@ public class MenuManager : MonoBehaviour
             bestPlayer = data.topPlayer;
             bestScore = data.topScore;
         }
+    }
+
+    public void ResetGame()
+    {
+        SaveData data = new SaveData();
+        data.topPlayer = "";
+        data.topScore = 0;
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
 }
