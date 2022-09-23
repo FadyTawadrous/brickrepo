@@ -1218,8 +1218,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86643b02babd3b4680d90d2eabcdb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
+  currentPlayer: 
+  currentScore: 0
+  bestPlayer: 
+  bestScore: 0
   inputField: {fileID: 1129316919}
+  scoreText: {fileID: 548012189}
 --- !u!4 &1654430392
 Transform:
   m_ObjectHideFlags: 0
