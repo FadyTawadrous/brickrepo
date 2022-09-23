@@ -12,7 +12,8 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
 
-    public string playerName;
+    public string currentPlayer;
+    public string bestPlayer;
     public TextMeshProUGUI inputField;
 
     private void Awake()
@@ -29,7 +30,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartNew()
     {
-        playerName = inputField.text;
+        currentPlayer = inputField.text;
         SceneManager.LoadScene(1);
     }
 
